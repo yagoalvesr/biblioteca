@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "cliente")
-public class Cliente {
+@Table(name = "livro")
+public class Livro {
 
     @Id
     @Column(name = "id")
@@ -17,8 +17,16 @@ public class Cliente {
     @Column(name = "nome")
     private String nome;
 
+    @ManyToOne
+    @JoinColumn(name = "autor_id")
+    private Autor autor;
+
+    @ManyToOne
+    @JoinColumn(name = "tipo_id")
+    private Tipo tipo;
+
     @JsonIgnore
-    @OneToMany(mappedBy = "cliente")
+    @ManyToMany(mappedBy = "livroSet")
     private Set<Emprestimo> emprestimoSet = new HashSet<>();
 
     public Integer getId() {
@@ -35,6 +43,22 @@ public class Cliente {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
 
     public Set<Emprestimo> getEmprestimoSet() {

@@ -3,23 +3,23 @@ package com.biblioteca.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "cliente")
-public class Cliente {
+@Table(name="autor")
+public class Autor {
 
     @Id
-    @Column(name = "id")
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "nome")
+    @Column(name="nome")
     private String nome;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cliente")
-    private Set<Emprestimo> emprestimoSet = new HashSet<>();
+    @OneToMany(mappedBy = "autor")
+    private List<Livro> livroList = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -36,9 +36,4 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public Set<Emprestimo> getEmprestimoSet() {
-        return emprestimoSet;
-    }
-
 }
