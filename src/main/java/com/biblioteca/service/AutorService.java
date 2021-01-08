@@ -21,7 +21,14 @@ public class AutorService {
         return autorDAO.findById(id).get();
     }
 
-    public void salvarAutor(Autor autor) {
-        autorDAO.save(autor);
+    public Autor salvarAutor(Autor autor) throws Exception {
+        Autor autorSalvo;
+        try {
+            autor.setNome(autor.getNome().toUpperCase());
+            autorSalvo = autorDAO.save(autor);
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+        return autorSalvo;
     }
 }
