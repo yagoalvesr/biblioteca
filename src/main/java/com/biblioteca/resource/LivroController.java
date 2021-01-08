@@ -28,7 +28,7 @@ public class LivroController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> salvarLivro(@RequestBody Livro livro) {
+    public ResponseEntity<String> salvarLivro(@RequestBody Livro livro) throws Exception {
         livroService.salvarLivro(livro);
         return ResponseEntity.ok().body("Livro salvo com sucesso!");
     }

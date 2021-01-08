@@ -22,6 +22,7 @@ public class ClienteService {
     }
 
     public void salvarCliente(Cliente cliente) {
+        cliente.setNome(cliente.getNome().toUpperCase());
         clienteDAO.save(cliente);
     }
 }

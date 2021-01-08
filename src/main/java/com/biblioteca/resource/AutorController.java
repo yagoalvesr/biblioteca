@@ -27,9 +27,4 @@ public class AutorController {
         return ResponseEntity.ok().body(autor);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> salvarAutor(@RequestBody Autor autor) {
-        autorService.salvarAutor(autor);
-        return ResponseEntity.ok().body("Autor salvo com sucesso!");
-    }
 }
